@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Map (Google Maps)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌍 Interactive Map</h1>
+    <input type="text" id="searchBox" placeholder="Search a location..." />
+    <button id="searchBtn">Search</button>
+  </header>
+
+  <div id="map"></div>
+
+  <!-- Script for our app -->
+  <script src="script.js"></script>
+
+  <!-- Load Google Maps API -->
+  <script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ9DCJ5KNvBfHNaqnLdQeZedSVgdp0ZIE&libraries=places&callback=initMap"
+></script>
+
+</body>
+</html>
