@@ -9,7 +9,7 @@ function initMap() {
     zoom: 5,
   });
 
-  geocoder = new google.maps.Geocoder(); // ✅ Enables location search
+  geocoder = new google.maps.Geocoder(); 
 
   // Location data for custom markers
   const locations = [
@@ -85,13 +85,11 @@ function initMap() {
     markers.push({ name: loc.name.toLowerCase(), marker });
   });
 
-  // 🔍 Enhanced Search Functionality
   document.getElementById("searchBtn").addEventListener("click", () => {
     const query = document.getElementById("searchBox").value.trim();
 
     if (!query) return alert("Please enter a location!");
 
-    // 1️⃣ Check if it's one of our predefined locations first
     const found = markers.find((m) => m.name.includes(query.toLowerCase()));
     if (found) {
       map.setCenter(found.marker.getPosition());
@@ -100,21 +98,18 @@ function initMap() {
       return;
     }
 
-    // 2️⃣ If not found, use Google Maps Geocoder to find it globally
     geocoder.geocode({ address: query }, (results, status) => {
       if (status === "OK") {
         const location = results[0].geometry.location;
         map.setCenter(location);
         map.setZoom(13);
 
-        // Add a temporary marker for searched location
         new google.maps.Marker({
           map: map,
           position: location,
           title: results[0].formatted_address,
         });
 
-        // Show info window
         infoWindow.setContent(`<b>${results[0].formatted_address}</b>`);
         infoWindow.setPosition(location);
         infoWindow.open(map);
